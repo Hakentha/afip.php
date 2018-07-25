@@ -100,6 +100,10 @@ class Afip {
 			$options['cert'] = 'cert';
 		}
 
+		if (!isset($options['certhomo'])) {
+			$options['certhomo'] = 'certhomo';
+		}
+
 		if (!isset($options['key'])) {
 			$options['key'] = 'key';
 		}
@@ -111,14 +115,15 @@ class Afip {
 		$dir_name = dirname(__FILE__);
 
 		$this->RES_FOLDER 	= $dir_name.'/Afip_res/';
-		$this->CERT 		= $this->RES_FOLDER.$options['cert'];
 		$this->PRIVATEKEY 	= $this->RES_FOLDER.$options['key'];
 
 		$this->WSAA_WSDL 	= $this->RES_FOLDER.'wsaa.wsdl';
 		if ($options['production'] === TRUE) {
+			$this->CERT 		= $this->RES_FOLDER.$options['cert'];
 			$this->WSAA_URL 	= 'https://wsaa.afip.gov.ar/ws/services/LoginCms';
 		}
 		else{
+			$this->CERT 		= $this->RES_FOLDER.$options['certhomo'];
 			$this->WSAA_URL 	= 'https://wsaahomo.afip.gov.ar/ws/services/LoginCms';
 		}
 
