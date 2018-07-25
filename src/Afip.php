@@ -117,13 +117,14 @@ class Afip {
 		$this->RES_FOLDER 	= $dir_name.'/Afip_res/';
 		$this->PRIVATEKEY 	= $this->RES_FOLDER.$options['key'];
 
-		$this->WSAA_WSDL 	= $this->RES_FOLDER.'wsaa.wsdl';
 		if ($options['production'] === TRUE) {
 			$this->CERT 		= $this->RES_FOLDER.$options['cert'];
+			$this->WSAA_WSDL 	= $this->RES_FOLDER.'wsaa-production.wsdl';
 			$this->WSAA_URL 	= 'https://wsaa.afip.gov.ar/ws/services/LoginCms';
 		}
 		else{
 			$this->CERT 		= $this->RES_FOLDER.$options['certhomo'];
+			$this->WSAA_WSDL 	= $this->RES_FOLDER.'wsaa.wsdl';
 			$this->WSAA_URL 	= 'https://wsaahomo.afip.gov.ar/ws/services/LoginCms';
 		}
 
